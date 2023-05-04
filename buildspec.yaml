@@ -1,14 +1,13 @@
-
 version: 0.2
-
 phases:
   pre_build:
     commands:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $MYREPO
   build:
     commands:         
-      - docker build -t $IMAGESNAMES:$IMAGESTAGS .
-      - docker tag $IMAGESNAMES:$IMAGESTAGS $MYREPO:$IMAGESTAGS   
+      - docker build -t $IMAGESNAME:$IMAGESTAG .
+      - docker tag $IMAGESNAME:$IMAGESTAG $MYREPO/$MYREPONAME:$IMAGESTAG   
+      
   post_build:
     commands:
-      - docker push $MYREPO:$IMAGESTAGS  
+      - docker push $MYREPO/$MYREPONAME:$IMAGESTAG  
