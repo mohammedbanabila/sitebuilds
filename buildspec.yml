@@ -8,8 +8,8 @@ phases:
     commands:   
       - echo build docker-image    
       - echo tag docker-image to be latest   
-      - docker build -t $IMAGESNAME:$IMAGESTAG .
-      - docker tag $IMAGESNAME:$IMAGESTAG $MYREPO/$MYREPONAME:$IMAGESTAG   
+      - docker build -t $IMAGESNAME .
+      - docker tag $IMAGESNAME:$IMAGESTAG  $MYREPO/$MYREPONAME:$IMAGESTAG   
       
   post_build:
     commands:
