@@ -13,5 +13,5 @@ phases:
       
   post_build:
     commands:
-      - echo  push it to ECR
+      - echo push it to ECR
       - docker push $MYREPO/$MYREPONAME:$IMAGESTAG  
