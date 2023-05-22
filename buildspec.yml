@@ -5,9 +5,15 @@ phases:
       - echo logging in to ECR
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $MYREPO
   build:
+    env:
+      variables:
+        WORDPRESS_DB_HOST=$DBHOST
+        WORDPRESS_DB_USER=$DBUSER
+        WORDPRESS_DB_PASSWORD=$DBPASSWD
+        WORDPRESS_DB_NAME=$DBNAME
     commands:   
       - echo build docker-image    
-      - echo tag docker-image to be latest   
+      - echo tag docker-image to be latest  
       - docker build -t $IMAGESNAME .
       - docker tag $IMAGESNAME:$IMAGESTAG  $MYREPO/$MYREPONAME:$IMAGESTAG   
       
